@@ -1,0 +1,66 @@
+Android面试题
+---
+
+1. 答案：ABD
+    
+    解析：参见Java API docs：http://docs.oracle.com/javase/7/docs/api/，exit()是System类的方法，如System.exit(0)。
+    
+
+2.答案：A
+    
+    解析：Java异常的基类为java.lang.Throwable，java.lang.Error和java.lang.Exception继承 Throwable，RuntimeException和其它的Exception等继承Exception，具体的RuntimeException继承RuntimeException。
+
+3. 答案：false
+    
+    解析：因为str2中的llo是新申请的内存块，而==判断的是对象的地址而非值，所以不一样。如果是String str2 = str1，那么就是true了。
+
+4. 答案：不能
+    
+    解析：volatile关键字用在多线程同步中，可保证读取的可见性，JVM只是保证从主内存加载到线程工作内存的值是最新的读取值，而非cache中。但多个线程对
+    
+    volatile的写操作，无法保证线程安全。例如假如线程1，线程2 在进行read,load 操作中，发现主内存中count的值都是5，那么都会加载这个最新的值，在线程1堆count进行修改之后，会write到主内存中，主内存中的count变量就会变为6；线程2由于已经进行read,load操作，在进行运算之后，也会更新主内存count的变量值为6；导致两个线程及时用volatile关键字修改之后，还是会存在并发的情况。
+
+5. 答案：AC
+
+6. 答案：
+Activity——onCreate->onStart->onResume->onPause->onStop->onDestroy
+Fragment——onAttach->onCreate->onCreateView->onActivityCreated->onStart->onResume->onPause->onStop->onDestroyView->onDestroy->onDetach
+
+7. 答：a. 声明该Android模块是一个Android库：apply plugin: 'com.android.library'
+    b. 声明该Android模块是一个Android应用：apply plugin: 'com.android.application'
+
+8. 答：git diff
+
+9. 答：a. 把service和activity分开，让service开机启动。设置一个broadcast receiver接受开机信号，使用RECEIVE_BOOT_COMPLETED的permission， 然后启动service。activity启动后绑定到service上，通过ipc机制通信，acitivity结束后松绑。注意安装后要手动启动service，不会自动启动，之后重启手机后才会随开机启动。
+    b. 在内存低的时候系统会自动清理进程，这时候后台service可能会被杀掉。可以在onStartCommand中返回START_STICKY，这样系统有足够多资源的时候，就会重新开启service。
+
+10. 答：Linux系统中grep命令是一种强大的文本搜索工具，它能使用正则表达式搜索文本，并把匹 配的行打印出来。grep全称是Global Regular Expression Print，表示全局正则表达式版本，它的使用权限是所有用户。
+
+11. 答：startActivityForResult (Intent intent, int requestCode)， onActivityResult (int requestCode, int resultCode, Intent data)
+
+12. 答：在TCP/IP协议中，TCP协议提供可靠的连接服务，采用三次握手建立一个连接。
+    第一次握手：建立连接时，客户端发送syn包(syn=j)到服务器，并进入SYN_SEND状态，等待服务器确认；
+    第二次握手：服务器收到syn包，必须确认客户的SYN(ack=j+1)，同时自己也发送一个SYN包(syn=k)，即SYN+ACK包，此时服务器进入SYN_RECV状态；
+    第三次握手：客户端收到服务器的SYN＋ACK包，向服务器发送确认包ACK(ack=k+1)，此包发送完毕，客户端和服务器进入ESTABLISHED状态，完成三次握手。
+
+13. 答：Java集合类提供了一套设计良好的支持对一组对象进行操作的接口和类。Java集合类里面最基本的接口有：
+    
+      - Collection：代表一组对象，每一个对象都是它的子元素。
+      - Set：不包含重复元素的Collection。
+      - List：有顺序的collection，并且可以包含重复元素。
+      - Map：可以把键(key)映射到值(value)的对象，键不能重复。
+
+14.答：
+
+    对象被值传递，意味着传递了对象的一个副本。因此，就算是改变了对象副本，也不会影响源对象的值。
+    对象被引用传递，意味着传递的并不是实际的对象，而是对象的引用。因此，外部对引用对象所做的改变会反映到所有的对象
+
+15.答：由高到低依次为物理层、数据链路层、网络层、传输层、会话层、表示层和应用层
+
+16.答：频繁插入，链表效率高，频繁查找数组效率高，那么综合一下，我个人觉得是哈希表，或者说HashMap等使用hash算法的数据结构
+
+SEE ALSO http://www.cnblogs.com/lanxuezaipiao/p/3371224.html
+
+17. 答：onInterceptTouchEvent()用于拦截触摸事件
+onTouchEvent()用于处理触摸事件
+

@@ -1,0 +1,68 @@
+Android面试题
+---
+
+1. 下面哪些是Thread类的方法（）
+    
+    A start()       
+    B run()       
+    C exit()       
+    D getPriority()
+
+2. 下面关于java.lang.Exception类的说法正确的是（）
+
+    A 继承自Throwable      
+    B 实现了Serialable接口
+    
+3. 下面程序的运行结果是true还是false？（）
+
+    ```
+    String str1 = "hello";
+    String str2 = "he" + new String("llo");
+    System.err.println(str1 == str2);
+    ```
+
+4. volatile关键字是否能保证线程安全？
+    
+
+5. 下列说法正确的是（）
+
+    A LinkedList继承自List
+    
+    B AbstractSet继承自Set
+    
+    C HashSet继承自AbstractSet
+    
+    D WeakMap继承自HashMap
+    
+
+6. Activity和Fragment生命周期有哪些？
+
+7. 如何在Gradle配置文件中声明该Android模块是一个Android库，声明该Android模块是一个Android应用呢？
+
+8. git来比较项目中任意两个版本的差异的命令是？
+
+  
+9. 如何让android的service一直在后台运行？
+
+  
+10. 试着简要描述一下grep的作用？
+
+  
+11. 如果想在Activity中得到新打开Activity关闭后返回的数据，需要使用系统提供什么方法？新的Activity关闭后会向前面的Activity传回数据，为了得到传回的数据，必须在前面的Activity中重写什么方法？（只写方法名即可）
+
+  
+12. TCP/IP 建立连接的过程?(3-way shake)
+
+
+13. java集合类框架的基本接口和类有哪些？
+
+14.什么是值传递和引用传递？
+
+
+15.OSI七层模型有哪七层？
+
+
+16.适合频繁插入和查找的数据结构?
+
+17. onInterceptTouchEvent()和onTouchEvent()的区别？
+
